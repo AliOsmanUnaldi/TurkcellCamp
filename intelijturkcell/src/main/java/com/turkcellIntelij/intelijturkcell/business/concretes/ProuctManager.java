@@ -44,6 +44,7 @@ public class ProuctManager implements ProductService {
     public Result add(CreateProductRequest createProductRequest) {
         Product product = this.modelMapperService.forRequest()
                 .map(createProductRequest, Product.class);
+        product.setProductId(0);
         this.productDao.save(product);
         return new SuccessResult("Product is added.");
     }
